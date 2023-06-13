@@ -1,0 +1,88 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <title>Random Quote Machine</title>
+    <style>
+      a{
+        margin-top: 5px;
+        margin-left: 0px;
+      }
+      *{
+       
+       margin: 20px 20px 20px 20px;
+       text-align: center;
+        
+
+      }
+    </style>
+    <script>
+     const QUOTEBANK = [
+       {
+        quote:"when the power of love overcomes the love of power, the world will know peace ",
+        author:"Jimi Handrix"
+      },
+            {
+              quote:"How well i have learned that there is no fence to sit on between heaven and hell",
+              author:"Johny Cach"
+            },
+            {
+              quote:"Don't you mind people grimmin in your face",
+              author:"Son Mouse"
+            }];
+              
+      window.onload = init;
+      function init(){
+        generateQuote()
+      }
+       
+        function generateQuote(){
+          let quoteSize=QUOTEBANK.length;
+          let randomIndex = Math.floor(Math.random() * quoteSize);
+          let randomQuoteData=QUOTEBANK[randomIndex];
+          let twitterLink = "https://twitter.com/intent/tweet?hashtags=quotes&amp;related=freecodecamp&amp;text=%22I%20didn%E2%80%99t%20fail%20the%20test.%20I%20just%20found%20100%20ways%20to%20do%20it%20wrong.%22%20Benjamin%20Franklin";
+          let quoteInApiFormat=randomQuoteData.quote.replace(/ /g, "%20");
+         twitterLink += quoteInApiFormat
+          let authorInApiFormat=randomQuoteData.author.replace(/ /g, "%20");
+         twitterLink += " - " + authorInApiFormat
+      document.getElementById("tweet-quote").href= twitterLink;
+          document.getElementById("text").innerText=randomQuoteData.quote; 
+          document.getElementById("author").innerText=randomQuoteData.author;
+      }
+
+    </script>
+    
+  </head>
+  <body>
+    <wrapper id="quote-box">
+      <div class="container">
+        <div class="row py-5">
+          <div class="col-md-6 offset-md-2">
+      <div class="card">
+        <div class="card-header text-center">
+          Random Quote Machine
+        </div>
+        <div class="card-body">
+          <h5 class="card-title"><div id="text"></div></h5>
+          <p class="card-text text-center">
+          <div id="author"></div></p>
+          <button id="new-quote" onClick="generateQuote()" class="btn w-100 btn-success ">New Quote</button>
+          <a href="#" id="tweet-quote" target="_blank" class="btn w-100 btn-primary">Tweet Quote</a>
+        </div>
+      </div>
+    </wrapper>
+  </div>
+</div>
+  </div>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js" integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+  </body>
+  
+  
+</html>
+
+       
